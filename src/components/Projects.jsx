@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Github, ExternalLink, Key, Gamepad2, Database, Cpu, Globe, Copy, Check, Terminal, Play, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { projectsData } from '../data/portfolioData';
+import { projectsData, personalData } from '../data/portfolioData';
 import SnakeGameDemo from './SnakeGameDemo';
+import Reveal, { RevealItem } from './Reveal';
 
 function PasswordGeneratorDemo() {
   const [length, setLength] = useState(16);
@@ -168,188 +169,201 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-void-850 border border-cyber-purple/30 text-cyber-lavender text-xs font-mono mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-cyber-purple" />
-            <span>ENGINEERED SOLUTIONS</span>
+        <Reveal>
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-void-850 border border-cyber-purple/30 text-cyber-lavender text-xs font-mono mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-cyber-purple" />
+              <span>ENGINEERED SOLUTIONS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Featured <span className="bg-gradient-to-r from-cyber-lavender to-cyber-cyan bg-clip-text text-transparent">Projects</span>
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-2xl font-mono">
+              Original backend applications, Python security utilities, games, and systems engineering.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Featured <span className="bg-gradient-to-r from-cyber-lavender to-cyber-cyan bg-clip-text text-transparent">Projects</span>
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-2xl font-mono">
-            Original backend applications, Python security utilities, games, and systems engineering.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <Reveal stagger className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Card 1: Password Generator (Hero Project with Live Interactive Simulator) */}
           {projectsData.slice(0, 1).map((proj) => (
-            <div
-              key={proj.id}
-              className="lg:col-span-12 glass-panel rounded-2xl p-6 sm:p-8 border border-cyber-purple/30 hover:border-cyber-purple/50 transition-all duration-300 shadow-2xl relative overflow-hidden group"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                <div className="lg:col-span-7 flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1.5">
-                        <Key className="w-3 h-3" />
-                        {proj.category}
-                      </span>
-                      <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-void-900 border border-white/10 text-slate-400">
-                        Python Standard Library Only
-                      </span>
-                    </div>
-
-                    <h3 className="text-2xl font-bold text-white font-sans group-hover:text-cyber-lavender transition-colors">
-                      {proj.title}
-                    </h3>
-                    <p className="text-xs font-mono text-cyber-lavender mt-1">{proj.tagline}</p>
-
-                    <p className="mt-4 text-sm text-slate-300 leading-relaxed font-sans">
-                      {proj.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mt-5">
-                      {proj.tags.map((tag, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-void-900 border border-white/5 text-slate-300"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-6 mt-6 border-t border-white/10 flex items-center gap-4">
-                    <a
-                      href={proj.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-xl bg-cyber-purple hover:bg-cyber-purple/80 text-white text-xs font-mono flex items-center gap-2 shadow-[0_0_20px_rgba(124,58,237,0.3)] transition-all"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span>View Source on GitHub</span>
-                    </a>
-                  </div>
-                </div>
-
-                <div className="lg:col-span-5 flex flex-col justify-center">
-                  <PasswordGeneratorDemo />
-                </div>
-              </div>
-            </div>
-          ))}
-
-          {/* Cards 2-5: Grid of other projects */}
-          {projectsData.slice(1).map((proj) => (
-            <div
-              key={proj.id}
-              className={`glass-panel rounded-2xl p-6 sm:p-7 border border-white/10 hover:border-cyber-purple/40 transition-all duration-300 flex flex-col justify-between group shadow-xl ${
-                proj.isSnakeGame ? 'lg:col-span-12' : 'lg:col-span-6'
-              }`}
-            >
-              <div className={proj.isSnakeGame ? 'grid grid-cols-1 lg:grid-cols-12 gap-6 items-start' : ''}>
-                <div className={proj.isSnakeGame ? 'lg:col-span-7 flex flex-col justify-between' : ''}>
-                  <div>
-                    {/* Optional Project Thumbnail */}
-                    {proj.image && (
-                      <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-white/10 bg-void-950 group/img">
-                        <img
-                          src={proj.image}
-                          alt={proj.title}
-                          className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500 filter brightness-90 contrast-105"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-void-950/90 via-transparent to-transparent" />
-                        <span className="absolute bottom-2.5 left-3 px-2 py-0.5 rounded bg-void-900/80 backdrop-blur-md text-[10px] font-mono text-cyber-lavender border border-white/10">
+            <RevealItem key={proj.id} className="lg:col-span-12">
+              <div
+                className="glass-panel rounded-2xl p-6 sm:p-8 border border-cyber-purple/30 hover:border-cyber-purple/50 transition-all duration-300 shadow-2xl relative overflow-hidden group"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  <div className="lg:col-span-7 flex flex-col justify-between h-full">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
+                        <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1.5">
+                          <Key className="w-3 h-3" />
                           {proj.category}
                         </span>
-                      </div>
-                    )}
-
-                    <div className="flex items-center justify-between mb-4">
-                      {!proj.image && (
-                        <div className="w-12 h-12 rounded-xl bg-void-900 border border-white/10 flex items-center justify-center group-hover:scale-105 group-hover:border-cyber-purple/40 transition-all">
-                          {getProjectIcon(proj.icon)}
-                        </div>
-                      )}
-                      {!proj.image && (
                         <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-void-900 border border-white/10 text-slate-400">
-                          {proj.category}
+                          Python Standard Library Only
                         </span>
-                      )}
-                    </div>
-
-                    <h3 className="text-xl font-bold text-white font-sans group-hover:text-cyber-lavender transition-colors">
-                      {proj.title}
-                    </h3>
-                    <p className="text-xs font-mono text-cyber-lavender mt-1">{proj.tagline}</p>
-
-                    <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
-                      {proj.description}
-                    </p>
-
-                    {proj.stats && (
-                      <div className="mt-4 p-2.5 rounded-lg bg-void-900/60 border border-white/5 text-[11px] font-mono text-slate-400">
-                        {proj.stats}
                       </div>
-                    )}
-                  </div>
 
-                  <div className="mt-4">
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {proj.tags.map((tag, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="text-[10px] font-mono px-2 py-0.5 rounded bg-void-900 border border-white/5 text-slate-400"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                      <h3 className="text-2xl font-bold text-white font-sans group-hover:text-cyber-lavender transition-colors">
+                        {proj.title}
+                      </h3>
+                      <p className="text-xs font-mono text-cyber-lavender mt-1">{proj.tagline}</p>
+
+                      <p className="mt-4 text-sm text-slate-300 leading-relaxed font-sans">
+                        {proj.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 mt-5">
+                        {proj.tags.map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-void-900 border border-white/5 text-slate-300"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
-                    <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                      <a
-                        href={proj.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-cyber-lavender hover:text-white transition-colors group/link"
-                      >
-                        <Github className="w-3.5 h-3.5" />
-                        <span>View Repository</span>
-                        <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                      </a>
-
-                      {proj.liveUrl && (
+                    <div className="pt-6 mt-6 border-t border-white/10 flex items-center gap-4">
+                      {proj.githubUrl && (
                         <a
-                          href={proj.liveUrl}
+                          href={proj.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors"
+                          className="px-4 py-2 rounded-xl bg-cyber-purple hover:bg-cyber-purple/80 text-white text-xs font-mono flex items-center gap-2 shadow-[0_0_20px_rgba(124,58,237,0.3)] transition-all"
                         >
-                          <span>Live Demo</span>
-                          <ExternalLink className="w-3 h-3" />
+                          <Github className="w-4 h-4" />
+                          <span>View Source on GitHub</span>
                         </a>
                       )}
                     </div>
                   </div>
-                </div>
 
-                {/* Snake Game playable simulation in right column */}
-                {proj.isSnakeGame && (
                   <div className="lg:col-span-5 flex flex-col justify-center">
-                    <SnakeGameDemo />
+                    <PasswordGeneratorDemo />
                   </div>
-                )}
+                </div>
               </div>
-            </div>
+            </RevealItem>
           ))}
 
-        </div>
+          {/* Cards 2-5: Grid of other projects */}
+          {projectsData.slice(1).map((proj) => (
+            <RevealItem
+              key={proj.id}
+              className={proj.isSnakeGame ? 'lg:col-span-12' : 'lg:col-span-6 flex'}
+            >
+              <div
+                className={`glass-panel rounded-2xl p-6 sm:p-7 border border-white/10 hover:border-cyber-purple/40 transition-all duration-300 flex flex-col justify-between group shadow-xl w-full`}
+              >
+                <div className={proj.isSnakeGame ? 'grid grid-cols-1 lg:grid-cols-12 gap-6 items-start' : ''}>
+                  <div className={proj.isSnakeGame ? 'lg:col-span-7 flex flex-col justify-between' : ''}>
+                    <div>
+                      {/* Optional Project Thumbnail */}
+                      {proj.image && (
+                        <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-white/10 bg-void-950 group/img">
+                          <img
+                            src={proj.image}
+                            alt={proj.title}
+                            className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500 filter brightness-90 contrast-105"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-void-950/90 via-transparent to-transparent" />
+                          <span className="absolute bottom-2.5 left-3 px-2 py-0.5 rounded bg-void-900/80 backdrop-blur-md text-[10px] font-mono text-cyber-lavender border border-white/10">
+                            {proj.category}
+                          </span>
+                        </div>
+                      )}
+
+                      <div className="flex items-center justify-between mb-4">
+                        {!proj.image && (
+                          <div className="w-12 h-12 rounded-xl bg-void-900 border border-white/10 flex items-center justify-center group-hover:scale-105 group-hover:border-cyber-purple/40 transition-all">
+                            {getProjectIcon(proj.icon)}
+                          </div>
+                        )}
+                        {!proj.image && (
+                          <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-void-900 border border-white/10 text-slate-400">
+                            {proj.category}
+                          </span>
+                        )}
+                      </div>
+
+                      <h3 className="text-xl font-bold text-white font-sans group-hover:text-cyber-lavender transition-colors">
+                        {proj.title}
+                      </h3>
+                      <p className="text-xs font-mono text-cyber-lavender mt-1">{proj.tagline}</p>
+
+                      <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                        {proj.description}
+                      </p>
+
+                      {proj.stats && (
+                        <div className="mt-4 p-2.5 rounded-lg bg-void-900/60 border border-white/5 text-[11px] font-mono text-slate-400">
+                          {proj.stats}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-4">
+                      <div className="flex flex-wrap gap-1.5 mb-5">
+                        {proj.tags.map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="text-[10px] font-mono px-2 py-0.5 rounded bg-void-900 border border-white/5 text-slate-400"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                        {proj.githubUrl && proj.githubUrl !== personalData.github && !proj.githubUrl.endsWith('/aryan-dev008') ? (
+                          <a
+                            href={proj.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-mono text-cyber-lavender hover:text-white transition-colors group/link"
+                          >
+                            <Github className="w-3.5 h-3.5" />
+                            <span>View Repository</span>
+                            <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                          </a>
+                        ) : (
+                          <span className="text-[11px] font-mono text-slate-500 italic">
+                            Core Architecture
+                          </span>
+                        )}
+
+                        {proj.liveUrl && (
+                          <a
+                            href={proj.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition-colors"
+                          >
+                            <span>Live Demo</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Snake Game playable simulation in right column */}
+                  {proj.isSnakeGame && (
+                    <div className="lg:col-span-5 flex flex-col justify-center">
+                      <SnakeGameDemo />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </RevealItem>
+          ))}
+
+        </Reveal>
 
       </div>
     </section>

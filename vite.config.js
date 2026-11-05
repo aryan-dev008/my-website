@@ -9,6 +9,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           three: ['three'],
+          motion: ['framer-motion', 'lenis'],
           vendor: ['react', 'react-dom', 'lucide-react', 'canvas-confetti'],
         },
       },

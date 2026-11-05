@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Code, Database, Layers, Cpu, Check, Sparkles } from 'lucide-react';
 import { coreExpertise } from '../data/portfolioData';
+import Reveal, { RevealItem } from './Reveal';
 
 function TiltCard({ item }) {
   const cardRef = useRef(null);
@@ -103,25 +104,29 @@ export default function Expertise() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-void-850 border border-cyber-purple/30 text-cyber-lavender text-xs font-mono mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-cyber-purple" />
-            <span>SERVICES &amp; CAPABILITIES</span>
+        <Reveal>
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-void-850 border border-cyber-purple/30 text-cyber-lavender text-xs font-mono mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-cyber-purple" />
+              <span>SERVICES &amp; CAPABILITIES</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Core <span className="bg-gradient-to-r from-cyber-lavender to-cyber-cyan bg-clip-text text-transparent">Expertise</span>
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-2xl font-mono">
+              Structured methodologies and backend engineering competencies.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Core <span className="bg-gradient-to-r from-cyber-lavender to-cyber-cyan bg-clip-text text-transparent">Expertise</span>
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-2xl font-mono">
-            Structured methodologies and backend engineering competencies.
-          </p>
-        </div>
+        </Reveal>
 
         {/* 2x2 Grid of 3D Kinetic Tilt Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <Reveal stagger className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {coreExpertise.map((item) => (
-            <TiltCard key={item.id} item={item} />
+            <RevealItem key={item.id} className="h-full">
+              <TiltCard item={item} />
+            </RevealItem>
           ))}
-        </div>
+        </Reveal>
 
       </div>
     </section>

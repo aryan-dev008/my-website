@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import BackgroundStars from './components/BackgroundStars';
+import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 import Expertise from './components/Expertise';
@@ -10,14 +11,19 @@ import Roadmap from './components/Roadmap';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ResumeModal from './components/ResumeModal';
+import useLenis from './hooks/useLenis';
 
 export default function App() {
+  useLenis();
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
     <div className="relative min-h-screen bg-void-900 text-slate-100 selection:bg-cyber-purple selection:text-white">
       {/* 3D Cosmic Starfield Canvas */}
       <BackgroundStars />
+
+      {/* Interactive Custom Follower Cursor */}
+      <CustomCursor />
 
       {/* Grid Pattern Overlay */}
       <div className="fixed inset-0 bg-grid-pattern pointer-events-none z-0 opacity-40" />

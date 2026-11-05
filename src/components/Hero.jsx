@@ -2,11 +2,11 @@ import React from 'react';
 import { ArrowDown, Github, Mail, MapPin, Terminal, Database, Code, CheckCircle2, Sparkles, ExternalLink, FileText } from 'lucide-react';
 import HeroThreeScene from './HeroThreeScene';
 import { personalData } from '../data/portfolioData';
+import { scrollTo as lenisScrollTo } from '../hooks/useLenis';
 
 export default function Hero({ onOpenResume }) {
   const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    lenisScrollTo('#' + id);
   };
 
   return (

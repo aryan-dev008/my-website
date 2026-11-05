@@ -87,7 +87,7 @@ export const skillCategories = [
     skills: [
       { name: "Django", level: "Exploring", badge: "Framework", color: "#10b981" },
       { name: "Flask", level: "Proficient", badge: "Micro-framework", color: "#64748b" },
-      { name: "FastAPI", level: "Intermediate", badge: "Async REST", color: "#06b6d4" },
+      { name: "FastAPI", level: "Learning", badge: "Async REST", color: "#06b6d4" },
       { name: "REST APIs", level: "Proficient", badge: "Architecture", color: "#8b5cf6" }
     ]
   },
@@ -96,8 +96,8 @@ export const skillCategories = [
     icon: "database",
     skills: [
       { name: "MySQL", level: "Proficient", badge: "Relational", color: "#3b82f6" },
-      { name: "PostgreSQL", level: "Intermediate", badge: "Enterprise SQL", color: "#6366f1" },
-      { name: "MongoDB", level: "Familiar", badge: "NoSQL", color: "#22c55e" },
+      { name: "PostgreSQL", level: "Learning", badge: "Enterprise SQL", color: "#6366f1" },
+      { name: "MongoDB", level: "Learning", badge: "NoSQL", color: "#22c55e" },
       { name: "Query Optimization", level: "Applied", badge: "Performance", color: "#f97316" }
     ]
   },
@@ -107,8 +107,8 @@ export const skillCategories = [
     skills: [
       { name: "Pandas", level: "Intermediate", badge: "DataFrames", color: "#a855f7" },
       { name: "NumPy", level: "Intermediate", badge: "Matrices", color: "#38bdf8" },
-      { name: "Scikit-learn", level: "Exploring", badge: "ML Models", color: "#f43f5e" },
-      { name: "Docker & Linux", level: "Intermediate", badge: "DevOps", color: "#0ea5e9" },
+      { name: "Scikit-learn", level: "Learning", badge: "ML Models", color: "#f43f5e" },
+      { name: "Docker & Linux", level: "Learning", badge: "DevOps", color: "#0ea5e9" },
       { name: "Git & GitHub", level: "Proficient", badge: "VCS", color: "#f97316" }
     ]
   }
@@ -124,7 +124,7 @@ export const projectsData = [
     tags: ["Python 3", "CLI", "Standard Library", "Input Validation", "Security"],
     icon: "key",
     image: null,
-    githubUrl: "https://github.com/aryan-dev008/Password-Genarator",
+    githubUrl: "https://github.com/aryan-dev008/Password-Generator",
     liveUrl: null,
     hasInteractiveDemo: true,
     codeSnippet: `import random, string
@@ -164,7 +164,7 @@ def generate_password(length=16, use_nums=True, use_syms=True):
     tags: ["Python", "MySQL", "OOP", "Schema Design", "Data Integrity"],
     icon: "database",
     image: "./images/projects/nikhil-KO4io-eCAXA-unsplash.jpg",
-    githubUrl: "https://github.com/aryan-dev008",
+    githubUrl: null,
     liveUrl: null,
     hasInteractiveDemo: false,
     stats: "3NF Normalization • Parameterized Queries • ACID Compliant"
@@ -178,7 +178,7 @@ def generate_password(length=16, use_nums=True, use_syms=True):
     tags: ["Python", "Logic Engineering", "OOP", "Clean Code"],
     icon: "cpu",
     image: "./images/projects/the-5th-IQYR7N67dhM-unsplash.jpg",
-    githubUrl: "https://github.com/aryan-dev008",
+    githubUrl: null,
     liveUrl: null,
     hasInteractiveDemo: false,
     stats: "Layered Middleware • Custom Exceptions • Decoupled Modules"

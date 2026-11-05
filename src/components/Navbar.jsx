@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, ArrowUpRight, Code2, FileText } from 'lucide-react';
 import { personalData } from '../data/portfolioData';
+import { scrollTo } from '../hooks/useLenis';
 
 export default function Navbar({ onOpenResume }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,10 +42,7 @@ export default function Navbar({ onOpenResume }) {
   const scrollToSection = (e, href) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollTo(href);
   };
 
   return (

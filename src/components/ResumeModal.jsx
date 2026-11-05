@@ -32,7 +32,7 @@ Portfolio: ${personalData.livePortfolio}
 ---
 ## FEATURED PROJECTS
 1. **Secure Password Generator**
-   - Repository: https://github.com/aryan-dev008/Password-Genarator
+   - Repository: https://github.com/aryan-dev008/Password-Generator
    - Built strictly with Python standard library (random, string).
    - Dynamic entropy generation (8-64 chars), character set toggles, defensive try/except handling.
 

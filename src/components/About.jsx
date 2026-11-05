@@ -1,6 +1,7 @@
 import React from 'react';
 import { BookOpen, Server, BrainCircuit, GraduationCap, MapPin, CheckCircle, Award, FileText } from 'lucide-react';
 import { personalData, stats } from '../data/portfolioData';
+import Reveal, { RevealItem } from './Reveal';
 
 export default function About({ onOpenResume }) {
   return (
@@ -11,24 +12,26 @@ export default function About({ onOpenResume }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-void-850 border border-cyber-purple/30 text-cyber-lavender text-xs font-mono mb-3">
-            <BookOpen className="w-3.5 h-3.5 text-cyber-purple" />
-            <span>MY BACKGROUND &amp; VISION</span>
+        <Reveal>
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-void-850 border border-cyber-purple/30 text-cyber-lavender text-xs font-mono mb-3">
+              <BookOpen className="w-3.5 h-3.5 text-cyber-purple" />
+              <span>MY BACKGROUND &amp; VISION</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              About <span className="bg-gradient-to-r from-cyber-lavender to-cyber-indigo bg-clip-text text-transparent">Me</span>
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-2xl font-mono">
+              Bridging core computer science principles with high-efficiency backend engineering.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            About <span className="bg-gradient-to-r from-cyber-lavender to-cyber-indigo bg-clip-text text-transparent">Me</span>
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-2xl font-mono">
-            Bridging core computer science principles with high-efficiency backend engineering.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <Reveal stagger className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Left Column: Portrait and Personal Details Box */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
+          <RevealItem className="lg:col-span-5 flex flex-col gap-6">
             
             {/* Visual Portrait Card */}
             <div className="relative rounded-2xl overflow-hidden border border-cyber-purple/30 glass-panel p-3 group shadow-[0_15px_40px_rgba(0,0,0,0.4)]">
@@ -73,10 +76,10 @@ export default function About({ onOpenResume }) {
               ))}
             </div>
 
-          </div>
+          </RevealItem>
 
           {/* Right Column: Bio Narrative & Academic Pillars */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <RevealItem className="lg:col-span-7 flex flex-col gap-6">
             
             {/* Story Card */}
             <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-cyber-purple/20 shadow-xl space-y-4">
@@ -140,9 +143,9 @@ export default function About({ onOpenResume }) {
               ))}
             </div>
 
-          </div>
+          </RevealItem>
 
-        </div>
+        </Reveal>
 
       </div>
     </section>
